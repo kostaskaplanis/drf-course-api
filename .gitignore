@@ -1,0 +1,15 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+.python-version
+staticfiles
+celerybeat-schedule
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+venf-drf
+# macOS
+.DS_Store
