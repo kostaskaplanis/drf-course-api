@@ -15,6 +15,10 @@ class ProductListAPIView(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+class ProductCreateAPIView(generics.CreateAPIView): 
+    model = Product
+    serializer_class = ProductSerializer
+
 # @api_view(['GET'])
 # def product_list(request): 
 #     products = Product.objects.all() 
