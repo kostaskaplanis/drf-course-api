@@ -1,7 +1,28 @@
 GET http://localhost:8000/products/ HTTP/1.1
 
+### 
+
+GET http://localhost:8000/products/2 HTTP/1.1
+
 
 ### 
+
+PUT http://localhost:8000/products/2 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer 
+# add your token here
+
+{
+  "description": "Eos maiores laboriosam laudantium iste quos perferendis blanditiis eum sit a? Repellat ratione corporis vitae facilis error, quibusdam tempore fuga beatae, harum quia provident nesciunt, doloremque id consectetur porro, cupiditate voluptate sequi saepe obcaecati expedita?",
+  "name": "Coffee Machine",
+  "price": "70.99",
+  "stock": 100
+}
+###
+DELETE http://localhost:8000/products/2 HTTP/1.1
+
+
+###
 
 POST http://localhost:8000/products/ HTTP/1.1
 Content-Type: application/json
@@ -20,8 +41,8 @@ POST http://localhost:8000/api/token/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "johndoe",
-    "password": "1234" 
+    "username": "test",
+    "password": "test" 
 }
 
 ### 
