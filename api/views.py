@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import generics
 from rest_framework.views import APIView
+from rest_framework import viewsets
 from api.filters import InStockFilterBackend, ProductFilter
 # from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import (
@@ -75,20 +76,26 @@ class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 #     serializer = ProductSerializer(product)
 #     return Response(serializer.data)
 
-class OrderListAPIView(generics.ListAPIView): 
+class OrderViewSet(viewsets.ModelViewSet): 
     queryset = Order.objects.prefetch_related('items__product')
     serializer_class = OrderSerializer
-    
-    
-class UserOrderListAPIView(generics.ListAPIView): 
-    queryset = Order.objects.prefetch_related('items__product')
-    serializer_class = OrderSerializer
-    # authentication_classes = [SessionAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+    pagination_class = None 
 
-    def get_queryset(self): 
-        qs = super().get_queryset()
-        return qs.filter(user=self.request.user)
+# class OrderListAPIView(generics.ListAPIView): 
+#     queryset = Order.objects.prefetch_related('items__product')
+#     serializer_class = OrderSerializer
+    
+    
+# class UserOrderListAPIView(generics.ListAPIView): 
+#     queryset = Order.objects.prefetch_related('items__product')
+#     serializer_class = OrderSerializer
+#     # authentication_classes = [SessionAuthentication, BasicAuthentication]
+#     permission_classes = [IsAuthenticated]
+
+#     def get_queryset(self): 
+#         qs = super().get_queryset()
+#         return qs.filter(user=self.request.user)
     
 # @api_view(['GET'])
 # def order_list(request): 
